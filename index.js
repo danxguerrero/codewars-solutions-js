@@ -103,3 +103,20 @@ function grader(score) {
   else if (score >= 0.7) return 'C';
   else if (score >= 0.6) return 'D';
 }
+
+
+// 7 kyu
+// Mumbling
+// This time no story, no theory. The examples below show you how to write function accum:
+
+// Examples:
+// accum("abcd") -> "A-Bb-Ccc-Dddd"
+// accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+// accum("cwAt") -> "C-Ww-Aaa-Tttt"
+// The parameter of accum is a string which includes only letters from a..z and A..Z.
+function accum(s) {
+  return s
+    .split('') // Split input into array of characters
+    .map((char, index) => char.toUpperCase() + char.toLowerCase().repeat(index)) // Map each character in array to an array of 1 upper case letter and then repeat character in lower case index times
+    .join('-'); // Join each part of array with a hyphen
+}
