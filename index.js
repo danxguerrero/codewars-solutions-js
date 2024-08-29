@@ -149,3 +149,36 @@ function twoSum(numbers, target) {
     testedNums[numbers[i]] = i
   }
 }
+
+// 6 kyu - Replace With Alphabet Position
+// In this kata you are required to, given a string, replace every letter with its position in the alphabet.
+
+// If anything in the text isn't a letter, ignore it and don't return it.
+
+// "a" = 1, "b" = 2, etc.
+
+// Example
+// Input = "The sunset sets at twelve o' clock."
+// Output = "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11"
+
+function alphabetPosition(text) {
+  // Convert the string to lowercase
+  text = text.toLowerCase()
+  // Create empty array to store positions
+  const positions = []
+  // Iterate over the string
+  for (i=0; i < text.length; i++) {
+    let char = text[i]
+    // Check if each character is a letter
+    if (char >= 'a' && char <= 'z') {
+      // Calculate position in alphabet
+      // Using charCodeAt(0) will give the ASCII code 
+      let position = char.charCodeAt(0) - 'a'.charCodeAt(0) + 1 // Subtracting the ASCII code of 'a' gives us the position in the alphabet (e.g., for 'a', 97 - 97 + 1 = 1).
+      // If letter, store the position in the created array
+      positions.push(position)
+    }
+
+  }
+  // Join each letter in the array
+  return positions.join(" ")
+}
