@@ -189,18 +189,20 @@ function alphabetPosition(text) {
 // moveZeros([false,1,0,1,2,0,1,3,"a"]) // returns[false,1,1,2,1,3,"a",0,0]
 
 function moveZeros(arr) {
-  let zeroCount = 0
+  let zeroCount = 0 
   let result = []
   
   for (i=0;i < arr.length; i++) {
-    if (arr[i] !== 0) {
-      result.push(arr[i])
+    if (arr[i] !== 0) { // If value does not equal zero
+      result.push(arr[i]) // push value to result array
     } else {
-      zeroCount++
+      zeroCount++ // if it does equal zero, increase the zero count
     }
   }
+
+  // Add zeros to the end of the array based on zero count
   for (i=1; i <= zeroCount; i++) {
-    result.push(0)
+    result.push(0) 
   }
   return result
 }
