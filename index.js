@@ -206,3 +206,30 @@ function moveZeros(arr) {
   }
   return result
 }
+
+// 6 kyu - Stop gninnipS My sdroW!
+// Write a function that takes in a string of one or more words, and returns the same string, but with all words that have five or more letters reversed (Just like the name of this Kata). Strings passed in will consist of only letters and spaces. Spaces will be included only when more than one word is present.
+
+// Examples:
+
+// "Hey fellow warriors"  --> "Hey wollef sroirraw" 
+// "This is a test        --> "This is a test" 
+// "This is another test" --> "This is rehtona test"
+
+function spinWords(string){
+  const words = string.split(" ") // Split the given string into an array of words 
+  const newSentence = []
+  for (let i=0; i < words.length; i++) {
+    const word = words[i]
+    if (word.length >= 5) { // If the word is 5 or more letters,
+      // Split the word into an array of characters
+      // Reverse the array 
+      // Join the array into a new string
+      const reversedWord = word.split("").reverse().join("")
+      newSentence.push(reversedWord) // Add that into the newSentence array
+    } else { 
+      newSentence.push(word) // If shorter than 5 letters, just push word into newSentence
+    }
+  }
+  return newSentence.join(" ") // return the newSentence joined with a space
+}
