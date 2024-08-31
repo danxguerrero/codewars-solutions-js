@@ -232,4 +232,8 @@ function spinWords(string){
     }
   }
   return newSentence.join(" ") // return the newSentence joined with a space
+
+  // Another Solution seen on codewars:
+  // return string.split(" ").map( word => word.length < 5 ? word : word.split("").reverse().join(""))
 }
+
