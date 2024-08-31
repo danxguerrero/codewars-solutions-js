@@ -237,3 +237,39 @@ function spinWords(string){
   // return string.split(" ").map( word => word.length < 5 ? word : word.split("").reverse().join(""))
 }
 
+// 5 kyu - Scramblies
+// Complete the function scramble(str1, str2) that returns true if a portion of str1 characters can be rearranged to match str2, otherwise returns false.
+
+// Notes:
+
+// Only lower case letters will be used (a-z). No punctuation or digits will be included.
+// Performance needs to be considered.
+// Examples
+// scramble('rkqodlw', 'world') ==> True
+// scramble('cedewaraaossoqqyt', 'codewars') ==> True
+// scramble('katas', 'steak') ==> False
+
+function scramble(str1, str2) {
+  // Start with an object to hold the character count
+  const charCount = {}
+  
+  // Iterate through str1 and add each letter to the object or increment if it already exists
+  for (let char of str1) {
+    charCount[char] = (charCount[char] || 0) + 1
+  }
+  
+  // Iterate through str2 
+  for (let char of str2) {
+    // if the character's count is more than 1, we will subtract 1 from the count, otherwise
+    // return false because the count is zero and we don't have enough of the letters
+    if (charCount[char] > 0) {
+      charCount[char] = charCount[char] - 1
+    } else {
+      return false
+    }
+  }
+
+  // If we make it through the loop without returning false, we can return true
+  // because character count was enough
+  return true
+}
