@@ -273,3 +273,36 @@ function scramble(str1, str2) {
   // because character count was enough
   return true
 }
+
+// 4 kyu - Adding Big Numbers
+// We need to sum big numbers and we require your help.
+
+// Write a function that returns the sum of two numbers. The input numbers are strings and the function must return a string.
+
+// Example
+// add("123", "321"); -> "444"
+// add("11", "99");   -> "110"
+// Notes
+// - The input numbers are big.
+// - The input is a string of only digits
+// - The numbers are positives
+
+function add(a, b) {
+  while (a.length < b.length) a = '0' + a
+  while (b.length < a.length) b = '0' + b
+  
+  let carry = 0
+  let result = []
+  
+  for (i = a.length - 1; i >= 0; i--) {
+    const sum = parseInt(a[i]) + parseInt(b[i]) + carry
+    result.unshift(sum % 10)
+    carry = Math.floor(sum / 10)
+  }
+  
+  if (carry > 0) {
+    result.unshift(carry)
+  }
+  
+  return result.join('')
+}
