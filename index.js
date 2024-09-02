@@ -288,21 +288,25 @@ function scramble(str1, str2) {
 // - The numbers are positives
 
 function add(a, b) {
+  // Pad the front of the shorter string with zeros until they are the same length
   while (a.length < b.length) a = '0' + a
   while (b.length < a.length) b = '0' + b
   
   let carry = 0
   let result = []
   
+  // Start loop from the rightmost numbers in string and simulate manually adding the nmbers
+  // like we would on paper
   for (i = a.length - 1; i >= 0; i--) {
     const sum = parseInt(a[i]) + parseInt(b[i]) + carry
-    result.unshift(sum % 10)
-    carry = Math.floor(sum / 10)
+    result.unshift(sum % 10) // Add last digit of sum to the front of the array
+    carry = Math.floor(sum / 10) // Carry becomes the leading digits of sum
   }
   
+  // At the end of the loop, if carry isn't zero, add it to the beginning of the result
   if (carry > 0) {
     result.unshift(carry)
   }
   
-  return result.join('')
+  return result.join('') // Join the array back into a string
 }
