@@ -347,3 +347,48 @@ function premierLeagueStandings(teamStandings) {
   
   return teamStandings
 }
+
+// 4 kyu - Sum Strings as Numbers
+// Given the string representations of two integers, return the string representation of the sum of those integers.
+
+// For example:
+
+// sumStrings('1','2') // => '3'
+// A string representation of an integer will contain no characters besides the ten numerals "0" to "9".
+
+// I have removed the use of BigInteger and BigDecimal in java
+
+// Python: your solution need to work with huge numbers (about a milion digits), converting to int will not work.
+
+function sumStrings(a, b) {
+  // Remove leading zeros from both strings
+  a = a.replace(/^0+/, '');
+  b = b.replace(/^0+/, '');
+
+  // If both strings are empty, return '0'
+  if (a === '' && b === '') {
+    return '0';
+  }
+
+  // Pad the shorter string with leading zeros
+  while (a.length < b.length) a = '0' + a;
+  while (b.length < a.length) b = '0' + b;
+
+  let carry = 0;
+  let result = [];
+
+  // Start adding from the rightmost digit
+  for (let i = a.length - 1; i >= 0; i--) {
+    let sum = parseInt(a[i]) + parseInt(b[i]) + carry;
+    carry = Math.floor(sum / 10);  // Calculate carry for the next iteration
+    result.push(sum % 10);  // Store the last digit of sum in the result
+  }
+
+  // If there's any remaining carry, add it to the front
+  if (carry) {
+    result.push(carry);
+  }
+
+  // The result array is in reverse order, so reverse it back
+  return result.reverse().join('');
+}
