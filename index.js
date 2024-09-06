@@ -392,3 +392,45 @@ function sumStrings(a, b) {
   // The result array is in reverse order, so reverse it back
   return result.reverse().join('');
 }
+
+// 4 kyu - Strip Comments
+// Complete the solution so that it strips all text that follows any of a set of comment markers passed in. Any whitespace at the end of the line should also be stripped out.
+
+// Example:
+
+// Given an input string of:
+
+// apples, pears # and bananas
+// grapes
+// bananas !apples
+// The output expected would be:
+
+// apples, pears
+// grapes
+// bananas
+// The code would be called like so:
+
+// var result = solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["#", "!"])
+// // result should == "apples, pears\ngrapes\nbananas"
+
+function solution(text, markers) {
+  // If array is empty, just return text
+  if (markers.length == 0) {
+    return text.trimEnd()
+  }
+  
+  // Split text at new line character into array of lines
+  let lines = text.split("\n")
+  
+  // Loop through each line to check for a marker
+  for (i=0; i<lines.length; i++) {
+    for (marker of markers) {
+      let markerIndex = lines[i].indexOf(marker)
+      if (markerIndex !== -1) {
+        lines[i] = lines[i].substring(0,markerIndex).trim()
+      }
+    }
+  }
+  
+  return lines.join("\n")
+}
