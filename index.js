@@ -414,23 +414,24 @@ function sumStrings(a, b) {
 // // result should == "apples, pears\ngrapes\nbananas"
 
 function solution(text, markers) {
-  // If array is empty, just return text
   if (markers.length == 0) {
-    return text.trimEnd()
+    return text.trimRight()
   }
-  
-  // Split text at new line character into array of lines
-  let lines = text.split("\n")
-  
-  // Loop through each line to check for a marker
-  for (i=0; i<lines.length; i++) {
-    for (marker of markers) {
-      let markerIndex = lines[i].indexOf(marker)
+  // Split the text into lines
+  let lines = text.split("\n");
+
+  // Process each line
+  for (let i = 0; i < lines.length; i++) {
+    for (let marker of markers) {
+      let markerIndex = lines[i].indexOf(marker);
       if (markerIndex !== -1) {
-        lines[i] = lines[i].substring(0,markerIndex).trim()
+        // Keep everything before the marker and trim trailing spaces after the marker
+        lines[i] = lines[i].substring(0, markerIndex).trimRight();
       }
+      lines[i] = lines[i].trimRight()
     }
   }
-  
-  return lines.join("\n")
+
+  // Join the lines back together with newline characters
+  return lines.join("\n");
 }
