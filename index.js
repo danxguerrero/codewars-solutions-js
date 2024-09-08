@@ -452,6 +452,8 @@ function solution(text, markers) {
 // Division should be integer division. For example, this should return 2, not 2.666666...:
 // eight(dividedBy(three()));
 
+// Make funtions for zero through nine that either returns the operation with the corresponding digit 
+// as an argument or just the digit
 function zero(op) {return op ? op(0) : 0}
 function one(op) {return op ? op(1) : 1}
 function two(op) {return op ? op(2) : 2}
@@ -463,6 +465,9 @@ function seven(op) {return op ? op(7) : 7}
 function eight(op) {return op ? op(8) : 8}
 function nine(op) {return op ? op(9) : 9}
 
+
+// Functions for each operation
+// They remember the left hand operator and perform the operation on the right hand operator passed in
 function plus(rightOp) {
   return function(leftOp) {
     return leftOp + rightOp
@@ -483,6 +488,6 @@ function times(rightOp) {
 
 function dividedBy(rightOp) {
   return function(leftOp) {
-    return Math.floor(leftOp / rightOp)
+    return Math.floor(leftOp / rightOp) // Rounds down to nearest whole number
   }
 }
