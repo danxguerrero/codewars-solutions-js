@@ -468,6 +468,7 @@ function nine(op) {return op ? op(9) : 9}
 
 // Functions for each operation
 // They remember the left hand operator and perform the operation on the right hand operator passed in
+// They use closures
 function plus(rightOp) {
   return function(leftOp) {
     return leftOp + rightOp
@@ -491,3 +492,4 @@ function dividedBy(rightOp) {
     return Math.floor(leftOp / rightOp) // Rounds down to nearest whole number
   }
 }
+
