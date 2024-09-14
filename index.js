@@ -667,3 +667,14 @@ function letterCount(str) {
   
   return letters;
 }
+
+// 7 kyu - Sort the Gift Code
+// Write a function called sortGiftCode that takes a string of gift codes and returns a string of gift codes sorted in alphabetical order.
+// Examples (Input -- => Output):
+// "abcdef"                      -- => "abcdef"
+// "pqksuvy"                     -- => "kpqsuvy"
+// "zyxwvutsrqponmlkjihgfedcba"  -- => "abcdefghijklmnopqrstuvwxyz"
+
+function sortGiftCode(code) {
+  return code.split('').sort().join('');
+}
