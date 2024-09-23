@@ -724,3 +724,39 @@ function fourSeasons(d) {
     return "The year flew by!";
   }
 }
+
+// 4 kyu - So Many Permutations!
+// In this kata you have to create all permutations of an input string and remove duplicates, if present. This means you have to shuffle all letters from the input in all possible ways and remove duplicate strings.
+
+// Examples:
+
+// permutations('a'); // ['a']
+// permutations('ab'); // ['ab', 'ba']
+// permutations('aabb'); // ['aabb', 'abab', 'abba', 'baab', 'baba', 'bbaa']
+// The order of the permutations doesn't matter.
+
+function permutations(string) {
+  // Use a Set to store unique permutations
+  const result = new Set();
+  
+  // Recursive function to generate permutations
+  function generate(currentStr, remainingStr) {
+    // Base case: if there are no more characters to add, add the current string to the result
+    if (remainingStr.length == 0) {
+      result.add(currentStr)
+    } else {
+      // Recursive case: add each character to the current string and generate permutations
+      for (let i=0; i < remainingStr.length; i++) {
+        let newStr = currentStr + remainingStr[i]
+        let newRemaining = remainingStr.slice(0,i) + remainingStr.slice(i+1)
+        generate(newStr, newRemaining)
+      }
+    }
+  }
+  
+  // Call generate on the string passed in
+  generate('', string)
+  
+  // Return the result as an array
+  return Array.from(result)
+}
